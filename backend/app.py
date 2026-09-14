@@ -6,8 +6,6 @@ app = Flask(__name__)
 # lets the react app run on a different port and still call this server
 CORS(app)
 
-# make sure the table exists before any request comes in
-init_db()
 
 
 @app.route("/api/health")
@@ -118,4 +116,6 @@ def delete_application(app_id):
 
 
 if __name__ == "__main__":
+    # create the table if it is missing, then start the server
+    init_db()
     app.run(debug=True, port=5000)
