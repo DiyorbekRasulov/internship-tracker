@@ -1,9 +1,10 @@
 name: CI
 
-# run on every push, and on every pull request
+# run on pushes to main and on every pull request
+# branch pushes are covered by the pull request trigger
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
 
 jobs:
