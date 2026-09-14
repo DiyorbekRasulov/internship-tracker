@@ -1,5 +1,5 @@
-// where the flask server is listening
-const API = "http://localhost:5000/api";
+// set VITE_API_URL when deploying, otherwise talk to the local flask server
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 // one helper that every request goes through
 async function request(path, options) {
