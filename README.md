@@ -105,7 +105,8 @@ Both redeploy automatically on every push to `main`.
 
 Both follow from using free hosting, and both are deliberate tradeoffs rather than
 oversights:
-
+- **No authentication.** All visitors share one dataset and can edit it. The live
+  site is a demo; real data is tracked on a local instance.
 - **Cold starts.** The backend sleeps after about 15 minutes of inactivity, so the
   first request after idle takes 30-60 seconds while it wakes up.
 - **Data is not durable.** SQLite writes to the container's local disk, which is
