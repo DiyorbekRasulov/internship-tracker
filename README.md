@@ -5,8 +5,8 @@ A small full stack app for tracking internship applications: company, role, link
 Built to learn the full path from database to browser, so the same API is consumed
 by two frontends: a plain HTML/CSS/JavaScript version and a React rewrite.
 
-**Live:** <!-- paste your Vercel URL here -->
-**API:** <!-- paste your Render URL here -->
+**Live:** https://internship-tracker-sage-one.vercel.app
+**API:** https://internship-tracker-api-cwal.onrender.com
 
 
 ![Screenshot](docs/screenshot.png)
@@ -119,3 +119,20 @@ input can never be executed as SQL. The plain JavaScript frontend escapes values
 before inserting them into the DOM; React handles that escaping itself.
 
 ## What I learned
+
+i built the frontend twice on purpose. first in plain javascript, then again in
+react. the plain version rebuilt the whole list after every change, and i had to
+write my own function to escape user input before putting it on the page. react
+does both of those for me, so a bug i had already written a workaround for just
+stopped existing.
+
+on the backend i used question mark placeholders in every sql query so user input
+can never run as sql. i also made the database path come from an environment
+variable, which let my tests run against a throwaway file instead of my real data.
+two things only broke once i deployed. gunicorn imports the file instead of
+running it, so the code that creates my table never ran. and vite puts
+environment variables into the bundle when it builds, not when the page loads, so
+my live site kept calling localhost until i rebuilt it.
+the biggest limitation is that sqlite sits on a disk that resets every time i
+redeploy, so the demo data disappears. i left it that way because postgres was
+not worth the extra time for a demo, but it is the first thing i would change.
