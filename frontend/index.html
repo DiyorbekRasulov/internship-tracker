@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internship Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Internship Tracker</h1>
+    <p id="summary">loading...</p>
+  </header>
+
+  <main>
+    <!-- form for adding a new application -->
+    <form id="add-form">
+      <input id="company" placeholder="Company" required>
+      <input id="role" placeholder="Role" required>
+      <input id="link" placeholder="Link (optional)" type="url">
+      <select id="status">
+        <option value="applied">Applied</option>
+        <option value="interviewing">Interviewing</option>
+        <option value="offer">Offer</option>
+        <option value="rejected">Rejected</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- javascript fills this in -->
+    <div id="list"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

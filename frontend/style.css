@@ -1,0 +1,95 @@
+/* css variables so colors are defined in one place */
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #1a1d21;
+  --muted: #6b7280;
+  --border: #e3e6ea;
+  --accent: #2563eb;
+  --applied: #6b7280;
+  --interviewing: #b45309;
+  --offer: #047857;
+  --rejected: #b91c1c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, sans-serif;
+}
+
+header, main { max-width: 800px; margin: 0 auto; }
+
+h1 { margin: 0 0 .25rem; font-size: 1.6rem; }
+#summary { margin: 0 0 1.5rem; color: var(--muted); font-size: .9rem; }
+
+/* flex wrap lets the inputs stack on small screens */
+#add-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+input, select, button {
+  padding: .55rem .7rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  background: var(--card);
+  color: inherit;
+}
+
+/* flex 1 makes the text inputs share the leftover space */
+#add-form input { flex: 1; min-width: 140px; }
+
+button[type="submit"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  margin-bottom: .5rem;
+}
+
+.info { flex: 1; min-width: 0; }
+.company { font-weight: 600; }
+.role { color: var(--muted); font-size: .9rem; }
+.role a { color: var(--accent); }
+
+/* the dot color comes from the status name */
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+.dot.applied { background: var(--applied); }
+.dot.interviewing { background: var(--interviewing); }
+.dot.offer { background: var(--offer); }
+.dot.rejected { background: var(--rejected); }
+
+.delete {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: .2rem .4rem;
+}
+.delete:hover { color: var(--rejected); }
+
+.empty { color: var(--muted); text-align: center; padding: 2rem; }
