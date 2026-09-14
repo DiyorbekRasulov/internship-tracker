@@ -6,6 +6,19 @@ app = Flask(__name__)
 # lets the react app run on a different port and still call this server
 CORS(app)
 
+# gunicorn imports this file rather than running it, so the main block below
+# never fires in production. this creates the table before the first request.
+_schema_ready = False
+
+
+@app.before_request
+def ensure_schema():
+    global _schema_ready
+    if not _schema_ready:
+        init_db()
+        _schema_ready = True
+
+
 
 
 @app.route("/api/health")

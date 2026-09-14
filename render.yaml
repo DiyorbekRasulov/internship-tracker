@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: internship-tracker-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # gunicorn is the production server, and $PORT is set by render
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.3"
